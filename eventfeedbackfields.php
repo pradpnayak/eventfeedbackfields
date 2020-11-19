@@ -247,6 +247,10 @@ function eventfeedbackfields_civicrm_fieldOptions($entity, $field, &$options, $p
 }
 
 function _eventfeedbackfields_civicrm_getContactID() {
+  $cid = CRM_Utils_Request::retrieve('cid', 'Positive');
+  if (!empty($cid)) {
+    return $cid;
+  }
   return Civi::$statics[CRM_Eventfeedbackfields_ExtensionUtil::LONG_NAME]['contactId'] ?? NULL;
 }
 
